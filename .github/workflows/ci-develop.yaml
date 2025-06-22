@@ -1,0 +1,21 @@
+name: wf-ci-develop
+on:
+   pull_request:
+     branches:
+       - develop
+     types:
+       - opened
+       - synchronize
+jobs:
+  lint-develop-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository On the Runner
+        uses: actions/checkout@v4
+      - name: Lint HTML Files With HTMLHint
+        run: npx htmlhint "**/*.html"
+      - name: Install Stylelint Dependencies
+        run: npm install --save-dev stylelint stylelint-config-standard
+      - name: List CSS Files With Stylelint
+        run: npx stylelint "**/*.css"
+      
