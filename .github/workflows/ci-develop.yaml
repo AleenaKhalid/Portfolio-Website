@@ -6,6 +6,7 @@ on:
      types:
        - opened
        - synchronize
+       - closed
 jobs:
   lint-develop-job:
     runs-on: ubuntu-latest
